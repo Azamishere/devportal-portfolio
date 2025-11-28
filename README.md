@@ -13,7 +13,9 @@ The project is free to download and customize. Feel free to fork, modify, and de
 - **Professional Layout**: Cards for stats, projects, and code snippets.
 
 ## Preview
+Live preview: [Devportofolio V1](https://devportfolio-v1.vercel.app)
 Here are some screenshots of the website in action:
+
 
 
 
@@ -29,7 +31,7 @@ Here are some screenshots of the website in action:
 ## Installation
 1. **Clone the Repository**:
    ```
-   git clone https://github.com/your-username/devportfolio.git
+   git clone https://github.com/Azamishere/devportal-portfolio.git
    cd devportfolio
    ```
 
