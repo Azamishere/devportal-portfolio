@@ -50,6 +50,7 @@ Here are some screenshots of the website in action:
 3. **Configure Root Directory** (if files are in a subfolder like "Here"):
    - In Vercel dashboard > Settings > General, set Root Directory to "Here" (or your folder name).
    - Alternatively, add `vercel.json` to the repo root:
+
      ```json
      {
        "rootDirectory": "Here"
