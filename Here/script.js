@@ -19,6 +19,10 @@ themeToggle.addEventListener('click', () => {
   html.setAttribute('data-theme', next);
   localStorage.setItem('theme', next);
   updateIcon(next);
+  // Update Discord widget if on discord page
+  if (document.getElementById('discord-widget')) {
+    updateDiscordWidget(next);
+  }
 });
 
 function updateIcon(theme) {
@@ -48,36 +52,28 @@ document.querySelectorAll('.nav-link').forEach(link => {
       sidebar.classList.remove('open');
       overlay.classList.remove('active');
     }
-    // Set active
-    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-    link.classList.add('active');
   });
 });
 
-// ==== Discord Widget ====
-const SERVER_ID = '123456789012345678'; // Replace with your actual Discord server ID
-const theme = html.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+// ==== Discord Widget (only on discord.html) ====
+if (document.getElementById('discord-widget')) {
+  const SERVER_ID = '1311858099413323847'; // Replace with your actual Discord server ID
+  const initialTheme = html.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  updateDiscordWidget(initialTheme);
 
-// Dynamically inject widget
-const widgetDiv = document.getElementById('discord-widget');
-widgetDiv.innerHTML = `
-  <iframe 
-    src="https://discord.com/widget?id=${SERVER_ID}&theme=${theme}" 
-    width="350" 
-    height="190" 
-    allowtransparency="true" 
-    frameborder="0" 
-    sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
-    style="border-radius: 8px; max-width: 100%;">
-  </iframe>
-`;
+  // Observer for theme changes
+  const observer = new MutationObserver(() => {
+    const newTheme = html.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    updateDiscordWidget(newTheme);
+  });
+  observer.observe(html, { attributes: true, attributeFilter: ['data-theme'] });
+}
 
-// Update widget theme when theme changes
-const observer = new MutationObserver(() => {
-  const newTheme = html.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+function updateDiscordWidget(theme) {
+  const widgetDiv = document.getElementById('discord-widget');
   widgetDiv.innerHTML = `
     <iframe 
-      src="https://discord.com/widget?id=${SERVER_ID}&theme=${newTheme}" 
+      src="https://discord.com/widget?id=${SERVER_ID}&theme=${theme}" 
       width="350" 
       height="190" 
       allowtransparency="true" 
@@ -86,22 +82,4 @@ const observer = new MutationObserver(() => {
       style="border-radius: 8px; max-width: 100%;">
     </iframe>
   `;
-});
-
-observer.observe(html, { attributes: true, attributeFilter: ['data-theme'] });
-
-// ==== Smooth scroll ====
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    const targetId = this.getAttribute('href');
-    if (targetId === '#') return;
-    const target = document.querySelector(targetId);
-    if (target) {
-      window.scrollTo({
-        top: target.offsetTop - 70,
-        behavior: 'smooth'
-      });
-    }
-  });
-});
+}
