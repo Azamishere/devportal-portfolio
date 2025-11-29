@@ -83,3 +83,24 @@ function updateDiscordWidget(theme) {
     </iframe>
   `;
 }
+
+// ==== Flip Cards on Click ===
+document.querySelectorAll('.flip-card').forEach(card => {
+  card.addEventListener('click', () => {
+    card.classList.toggle('flipped');
+  });
+});
+
+// ==== Shuffle Skills on Click (only on skills.html) ====
+if (document.querySelector('.skills-grid')) {
+  const skillsGrid = document.querySelector('.skills-grid');
+  skillsGrid.addEventListener('click', (e) => {
+    if (e.target.closest('.skill-item')) {
+      const skills = Array.from(skillsGrid.children);
+      skills.sort(() => Math.random() - 0.5);
+      skills.forEach(skill => skillsGrid.appendChild(skill));
+      skillsGrid.style.transition = 'all 0.5s ease';
+      setTimeout(() => skillsGrid.style.transition = '', 500);
+    }
+  });
+}
