@@ -84,38 +84,40 @@ function updateDiscordWidget(theme) {
   `;
 }
 
-// ==== Skills shuffle animation (only on skills.html) ====
+// ==== Skills card animations (only on skills.html) ====
 const skillsGrid = document.querySelector('.skills-card-grid');
 if (skillsGrid) {
   const cards = Array.from(skillsGrid.querySelectorAll('.skill-card'));
 
-  function shuffleSkillCards() {
-    const currentCards = Array.from(skillsGrid.querySelectorAll('.skill-card'));
-
-    // Randomize order
-    const shuffled = currentCards
-      .map(card => ({ card, sort: Math.random() }))
-      .sort((a, b) => a.sort - b.sort)
-      .map(obj => obj.card);
-
-    shuffled.forEach((card, index) => {
-      // small random offset for "shuffling" feeling
-      const offsetX = (Math.random() - 0.5) * 24;
-      const offsetY = (Math.random() - 0.5) * 24;
-      const rotate = (Math.random() - 0.5) * 10;
-      card.style.transform = `translate(${offsetX}px, ${offsetY}px) rotate(${rotate}deg)`;
-      card.style.order = index;
-    });
-
-    // smooth back to grid
+  cards.forEach((card, index) => {
+    // Stagger animation on load
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(20px)';
+    
     setTimeout(() => {
-      shuffled.forEach(card => {
-        card.style.transform = '';
-      });
-    }, 350);
-  }
+      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      card.style.opacity = '1';
+      card.style.transform = 'translateY(0)';
+    }, index * 100);
 
-  cards.forEach(card => {
-    card.addEventListener('click', shuffleSkillCards);
+    // Add ripple effect on click
+    card.addEventListener('click', function(e) {
+      const ripple = document.createElement('span');
+      const rect = card.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const x = e.clientX - rect.left - size / 2;
+      const y = e.clientY - rect.top - size / 2;
+      
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = x + 'px';
+      ripple.style.top = y + 'px';
+      ripple.classList.add('ripple');
+      
+      card.appendChild(ripple);
+      
+      setTimeout(() => {
+        ripple.remove();
+      }, 600);
+    });
   });
 }
