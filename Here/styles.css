@@ -302,6 +302,11 @@ body {
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 16px;
+  transition: transform 0.3s ease;
+}
+
+.page-image:hover {
+  transform: scale(1.05);
 }
 
 .page-title {
@@ -370,6 +375,17 @@ body {
 
 .project-card:hover {
   transform: translateY(-5px);
+}
+
+.project-thumbnail {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-thumbnail {
+  transform: scale(1.1);
 }
 
 .project-header {
@@ -514,6 +530,11 @@ body {
   border-radius: 8px;
   padding: 20px;
   text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.discord-widget:hover {
+  transform: scale(1.02);
 }
 
 .discord-title {
@@ -562,6 +583,56 @@ body {
   z-index: 99;
 }
 
+/* Flip Card */
+.flip-card {
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: var(--shadow);
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background: var(--main-bg);
+}
+
+.flip-card-back {
+  background: var(--card-bg);
+  color: var(--text-primary);
+  transform: rotateY(180deg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Skill Thumbnail */
+.skill-thumbnail {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
 /* Skills Grid */
 .skills-grid {
   display: flex;
@@ -574,34 +645,15 @@ body {
 
 .skill-item {
   flex: 0 0 200px;
-  background: var(--main-bg);
-  padding: 16px;
   border-radius: 6px;
   text-align: center;
-  box-shadow: var(--shadow);
   scroll-snap-align: start;
+  transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
-.skill-item i {
-  font-size: 32px;
-  color: var(--accent);
-  margin-bottom: 12px;
-}
-
-.skill-item h3 {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-
-.skill-item ul {
-  list-style: none;
-  font-size: 14px;
-  color: var(--text-secondary);
-}
-
-.skill-item li {
-  margin-bottom: 4px;
+.skill-item:hover {
+  transform: scale(1.05);
 }
 
 /* Contact Form */
@@ -711,6 +763,16 @@ body {
   .page-image {
     max-height: 200px;
   }
+  .project-thumbnail {
+    height: 150px;
+  }
+  .discord-widget iframe {
+    width: 100%;
+    height: 150px;
+  }
+  .skill-thumbnail {
+    height: 120px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -747,5 +809,8 @@ body {
   }
   .skill-item {
     flex: 0 0 160px;
+  }
+  .flip-card-back p {
+    font-size: 12px;
   }
 }
