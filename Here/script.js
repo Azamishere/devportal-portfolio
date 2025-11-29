@@ -1,17 +1,25 @@
+// script.js
+// ==== Theme System ====
 const html = document.documentElement;
 const themeToggle = document.getElementById('theme-toggle');
 const icon = themeToggle.querySelector('i');
+
+// Detect OS preference
 const osTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+
+// Load saved theme or use OS default
 const savedTheme = localStorage.getItem('theme') || osTheme;
 html.setAttribute('data-theme', savedTheme);
 updateIcon(savedTheme);
 
+// Toggle theme
 themeToggle.addEventListener('click', () => {
   const current = html.getAttribute('data-theme');
   const next = current === 'dark' ? 'light' : 'dark';
   html.setAttribute('data-theme', next);
   localStorage.setItem('theme', next);
   updateIcon(next);
+  // Update Discord widget if on discord page
   if (document.getElementById('discord-widget')) {
     updateDiscordWidget(next);
   }
@@ -22,6 +30,7 @@ function updateIcon(theme) {
   icon.title = `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`;
 }
 
+// ==== Mobile Sidebar ====
 const sidebar = document.getElementById('sidebar');
 const menuToggle = document.getElementById('menu-toggle');
 const overlay = document.getElementById('overlay');
@@ -36,6 +45,7 @@ overlay.addEventListener('click', () => {
   overlay.classList.remove('active');
 });
 
+// Close sidebar on nav link click (mobile)
 document.querySelectorAll('.nav-link').forEach(link => {
   link.addEventListener('click', () => {
     if (window.innerWidth <= 768) {
@@ -45,10 +55,13 @@ document.querySelectorAll('.nav-link').forEach(link => {
   });
 });
 
+// ==== Discord Widget (only on discord.html) ====
 if (document.getElementById('discord-widget')) {
-  const SERVER_ID = '1311858099413323847'; // nah yg ini nih, ganti id server discord lu
+  const SERVER_ID = '123456789012345678'; // Replace with your actual Discord server ID
   const initialTheme = html.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
   updateDiscordWidget(initialTheme);
+
+  // Observer for theme changes
   const observer = new MutationObserver(() => {
     const newTheme = html.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
     updateDiscordWidget(newTheme);
