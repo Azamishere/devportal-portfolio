@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Choazmmm | Skills</title>
   <meta name="description" content="My professional skills and expertise.">
-  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -16,19 +15,14 @@
 <body>
   <div class="overlay" id="overlay"></div>
   <aside class="sidebar" id="sidebar">
+    <!-- Sidebar tetap sama seperti sebelumnya -->
     <div class="sidebar-header">
-      <div class="logo">
-        <i class="fab fa-discord"></i>
-        <span>DevPortfolio</span>
-      </div>
+      <div class="logo"><i class="fab fa-discord"></i><span>DevPortfolio</span></div>
       <div class="user-card">
         <img class="avatar" src="https://e.top4top.io/p_3619i9kbm1.jpg" alt="Choazmmm">
         <div class="user-info">
           <div class="username">Choazmmm</div>
-          <div class="status">
-            <span class="status-dot"></span>
-            Available for Collaboration
-          </div>
+          <div class="status"><span class="status-dot"></span> Available for Collaboration</div>
         </div>
       </div>
     </div>
@@ -51,31 +45,29 @@
       </ul>
     </div>
   </aside>
+
   <main class="main">
     <header class="header">
       <div class="header-left">
-        <button class="menu-toggle" id="menu-toggle">
-          <i class="fas fa-bars"></i>
-        </button>
+        <button class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></button>
         <div class="header-title">Skills</div>
       </div>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-        <i class="fas fa-moon"></i>
-      </button>
+      <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
     </header>
+
     <div class="content">
       <section id="skills">
         <h1 class="page-title">My Skills</h1>
-        <p class="page-subtitle">A showcase of my technical expertise and proficiencies.</p>
-        <div class="card">
-          <div class="card-header">
-            <h2 class="card-title">Technical Skills</h2>
-          </div>
-          <div class="skills-grid">
-            <div class="skill-item flip-card">
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <i class="fas fa-code"></i>
+        <p class="page-subtitle">Click any card to flip and see more details</p>
+
+        <div class="skills-grid">
+          <!-- Skill 1 -->
+          <div class="skill-card flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="https://images.unsplash.com/photo-1517694711122-e66818c5c610" alt="JS/TS" class="skill-img">
+                <div class="skill-content">
+                  <i class="fab fa-js-square"></i>
                   <h3>Programming Languages</h3>
                   <ul>
                     <li>JavaScript/TypeScript</li>
@@ -83,15 +75,20 @@
                     <li>Java</li>
                   </ul>
                 </div>
-                <div class="flip-card-back">
-                  <h3>Details</h3>
-                  <p>Expert in modern JS frameworks and Python for data science.</p>
-                </div>
+              </div>
+              <div class="flip-card-back">
+                <h3>Expert Level</h3>
+                <p>10+ years with modern JavaScript ecosystem & TypeScript. Built large-scale apps with React, Node.js, and Python backend.</p>
               </div>
             </div>
-            <div class="skill-item flip-card">
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
+          </div>
+
+          <!-- Skill 2 -->
+          <div class="skill-card flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb" alt="DB" class="skill-img">
+                <div class="skill-content">
                   <i class="fas fa-database"></i>
                   <h3>Databases</h3>
                   <ul>
@@ -100,15 +97,20 @@
                     <li>Redis</li>
                   </ul>
                 </div>
-                <div class="flip-card-back">
-                  <h3>Details</h3>
-                  <p>Experienced in SQL and NoSQL databases for scalable apps.</p>
-                </div>
+              </div>
+              <div class="flip-card-back">
+                <h3>Advanced</h3>
+                <p>Designed complex schemas, query optimization, caching strategies, and real-time data sync.</p>
               </div>
             </div>
-            <div class="skill-item flip-card">
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
+          </div>
+
+          <!-- Skill 3 -->
+          <div class="skill-card flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa" alt="Cloud" class="skill-img">
+                <div class="skill-content">
                   <i class="fas fa-cloud"></i>
                   <h3>Cloud & DevOps</h3>
                   <ul>
@@ -117,50 +119,61 @@
                     <li>Kubernetes</li>
                   </ul>
                 </div>
-                <div class="flip-card-back">
-                  <h3>Details</h3>
-                  <p>Proficient in cloud deployment and containerization.</p>
-                </div>
+              </div>
+              <div class="flip-card-back">
+                <h3>Production Ready</h3>
+                <p>Deployed and managed high-traffic apps on AWS with CI/CD, Docker containers, and Kubernetes orchestration.</p>
               </div>
             </div>
-            <div class="skill-item flip-card">
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <i class="fas fa-paint-brush"></i>
+          </div>
+
+          <!-- Skill 4 -->
+          <div class="skill-card flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="React" class="skill-img">
+                <div class="skill-content">
+                  <i class="fab fa-react"></i>
                   <h3>Frontend Frameworks</h3>
                   <ul>
                     <li>React</li>
                     <li>Vue.js</li>
-                    <li>Angular</li>
+                    <li>Next.js</li>
                   </ul>
                 </div>
-                <div class="flip-card-back">
-                  <h3>Details</h3>
-                  <p>Building responsive UIs with modern frameworks.</p>
-                </div>
+              </div>
+              <div class="flip-card-back">
+                <h3>Expert UI/UX</h3>
+                <p>Built pixel-perfect, responsive, and performant UIs with modern state management and SSR.</p>
               </div>
             </div>
-            <div class="skill-item flip-card">
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <i class="fas fa-server"></i>
+          </div>
+
+          <!-- Skill 5 -->
+          <div class="skill-card flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="https://images.unsplash.com/photo-1558655146-9f40138ed1cb" alt="Node" class="skill-img">
+                <div class="skill-content">
+                  <i class="fab fa-node"></i>
                   <h3>Backend Technologies</h3>
                   <ul>
                     <li>Node.js</li>
-                    <li>Express</li>
                     <li>NestJS</li>
+                    <li>Express</li>
                   </ul>
                 </div>
-                <div class="flip-card-back">
-                  <h3>Details</h3>
-                  <p>Creating robust APIs and server-side logic.</p>
-                </div>
+              </div>
+              <div class="flip-card-back">
+                <h3>Scalable APIs</h3>
+                <p>Built REST & GraphQL APIs with authentication, rate limiting, microservices, and real-time features.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
     </div>
+
     <footer class="footer">
       <p>© 2025 Choazmmm • Built with Modern Web Technologies</p>
       <p class="footer-note">Inspired by Professional Developer Portals — Empowering Innovation Through Code.</p>
